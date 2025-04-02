@@ -1,0 +1,229 @@
+{% extends 'client/base.html' %}
+{% block content %}
+<main class="nxl-container">
+    <div class="nxl-content">
+        <div class="main-content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card stretch stretch-full">
+                        {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                        {% endif %}
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="form_type" value="user_form">
+                            <div class="card-body general-info">
+                                <div class="mb-5 d-flex align-items-center justify-content-between">
+                                    <h5 class="fw-bold mb-0 me-4">
+                                        <span class="d-block mb-2">담당자 정보 :</span>
+                                        <span class="fs-12 fw-normal text-muted text-truncate-1-line">변경 사항을 수정한 후 "변경내용 저장" 버튼을 눌러주세요.</span>
+                                    </h5>
+                                    <div class="text-end">
+                                        <button type="submit" class="btn btn-primary">변경내용 저장</button>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 align-items-center">
+                                    <div class="col-lg-4">
+                                        <label for="fullnameInput" class="fw-semibold">이름: </label>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <div class="input-group-text"><i class="bi bi-person-circle"></i></div>
+                                            <input type="text" class="form-control" id="fullnameInput" name="full_name" value="{{ user.full_name }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 align-items-center">
+                                    <div class="col-lg-4">
+                                        <label for="mailInput" class="fw-semibold">이메일: </label>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <div class="input-group-text"><i class="bi bi-envelope"></i></div>
+                                            <input type="text" class="form-control" id="mailInput" name="email" value="{{ user.email }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 align-items-center">
+                                    <div class="col-lg-4">
+                                        <label for="phoneInput" class="fw-semibold">회사 전화번호: </label>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <div class="input-group-text"><i class="bi bi-telephone"></i></div>
+                                            <input type="text" class="form-control" id="phoneInput" name="phone1" value="{{ user.phone1 }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 align-items-center">
+                                    <div class="col-lg-4">
+                                        <label for="phoneInput" class="fw-semibold">휴대 전화번호: </label>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <div class="input-group-text"><i class="bi bi-telephone"></i></div>
+                                            <input type="text" class="form-control" id="phoneInput" name="phone2" value="{{ user.phone2 }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 align-items-center">
+                                    <div class="col-lg-4">
+                                        <label for="designationInput" class="fw-semibold">소속부서: </label>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <div class="input-group-text"><i class="bi bi-archive"></i></div>
+                                            <input type="text" class="form-control" id="departmentInput" name="department" value="{{ user.department }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </form>
+                        <hr class="mt-0">
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="form_type" value="company_form">
+                            <div class="card-body lead-status">
+                                <div class="mb-5 d-flex align-items-center justify-content-between">
+                                    <h5 class="fw-bold mb-0 me-4">
+                                        <span class="d-block mb-2">기관 정보 :</span>
+                                        <span class="fs-12 fw-normal text-muted text-truncate-1-line">변경 사항을 수정한 후 "변경내용 저장" 버튼을 눌러주세요.</span>
+                                    </h5>
+                                    <div class="text-end">
+                                        <button type="submit" class="btn btn-primary">변경내용 저장</button>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 align-items-center">
+                                    <div class="col-lg-4">
+                                        <label for="fullnameInput" class="fw-semibold">기관명: </label>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <div class="input-group-text"><i class="bi bi-building-fill"></i></div>
+                                            <input type="text" class="form-control" id="companynameInput" name="name" value="{{ user.project.company.name }}" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 align-items-center">
+                                    <div class="col-lg-4">
+                                        <label for="fullnameInput" class="fw-semibold">사업자번호: </label>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <div class="input-group-text"><i class="bi bi-fingerprint"></i></div>
+                                            <input type="text" class="form-control" id="companynameInput" name="name" value="{{ user.project.company.companycode }}" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 align-items-center">
+                                    <div class="col-lg-4">
+                                        <label for="mailInput" class="fw-semibold">대표자: </label>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <div class="input-group-text"><i class="bi bi-person-vcard"></i></div>
+                                            <input type="text" class="form-control" id="ceoInput" name="ceo" value="{{ user.project.company.ceo }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 align-items-center">
+                                    <div class="col-lg-4">
+                                        <label for="phoneInput" class="fw-semibold">기업타입: </label>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <div class="input-group-text"><i class="bi bi-bookmark-fill"></i></div>
+                                            <input type="text" class="form-control" id="typeInput" name="type" value="{{ user.project.company.type }}" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 align-items-center">
+                                    <div class="col-lg-4">
+                                        <label for="phoneInput" class="fw-semibold">기업요율: </label>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <div class="input-group-text"><i class="bi bi-file-spreadsheet-fill"></i></div>
+                                            <input type="text" class="form-control" id="rate_sizeInput" name="rate_size" readonly data-original="{{ user.project.company.rate_size }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 align-items-center">
+                                    <div class="col-lg-4">
+                                        <label for="designationInput" class="fw-semibold">업종: </label>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <div class="input-group-text"><i class="bi bi-building-gear"></i></div>
+                                            <input type="text" class="form-control" id="fieldInput" name="field" value="{{ user.project.company.field }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 align-items-center">
+                                    <div class="col-lg-4">
+                                        <label for="designationInput" class="fw-semibold">주소: </label>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <div class="input-group-text"><i class="bi bi-geo-alt"></i></div>
+                                            <input type="text" class="form-control" id="addressInput" name="address" value="{{ user.project.company.address }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 align-items-center">
+                                    <div class="col-lg-4">
+                                        <label for="designationInput" class="fw-semibold">대표 전화번호: </label>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <div class="input-group-text"><i class="bi bi-telephone"></i></div>
+                                            <input type="text" class="form-control" id="telInput" name="tel" value="{{ user.project.company.tel }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 align-items-center">
+                                    <div class="col-lg-4">
+                                        <label for="designationInput" class="fw-semibold">대표 이메일: </label>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <div class="input-group-text"><i class="bi bi-envelope"></i></div>
+                                            <input type="text" class="form-control" id="emailInput" name="email" value="{{ user.project.company.email }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 align-items-center">
+                                    <div class="col-lg-4">
+                                        <label for="designationInput" class="fw-semibold">홈페이지 주소: </label>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="input-group">
+                                            <div class="input-group-text"><i class="bi bi-house-door"></i></div>
+                                            <input type="text" class="form-control" id="homepageInput" name="homepage" value="{{ user.project.company.homepage }}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('rate_sizeInput');
+    const original = parseFloat(input.dataset.original);
+    if (!isNaN(original)) {
+        input.value = (original * 100).toFixed(1) + '%';
+    }
+});
+</script>
+{% endblock %}

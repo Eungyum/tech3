@@ -1,0 +1,19 @@
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+from rawdata.models import UniqueObject
+
+class MemberUser(AbstractUser):
+    ROLE_CHOICES = (
+        ('client', 'Client'),
+        ('manager', 'Manager'),
+    )
+    # project = models.ForeignKey(UniqueObject, on_delete=models.CASCADE, verbose_name="과제정보", to_field="unique_key", null=True, blank=True)
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='client')
+    full_name = models.CharField(max_length=20, verbose_name="이름", blank=True, null=True)
+    phone1 = models.CharField(max_length=15, verbose_name="회사 전화번호", blank=True, null=True)
+    phone2 = models.CharField(max_length=15, verbose_name="휴대 전화번호", blank=True, null=True)
+    company = models.CharField(max_length=30, verbose_name="회사", null=True, blank=True)
+    companylogo = models.ImageField(verbose_name="로고 이미지", null=True, blank=True, upload_to='agency/logos/')
+    department = models.CharField(max_length=30, verbose_name="소속부서", blank=True, null=True)
+    def __str__(self):
+        return f"{self.username}"

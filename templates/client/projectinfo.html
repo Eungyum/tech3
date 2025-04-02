@@ -1,0 +1,318 @@
+{% extends 'client/base.html' %}
+{% load static %}
+{% block content %}
+
+<main class="nxl-container">
+    <div class="nxl-content">
+        <div class="main-content">
+            <div class="card card-body">
+                <div class="mb-4 d-flex align-items-center justify-content-between">
+                    <h5 class="fw-bold mb-0">
+                        <span class="d-block mb-2">과제 기본 정보 :</span>
+                        {% comment %} <span class="fs-12 fw-normal text-muted d-block">Following information for your lead</span> {% endcomment %}
+                    </h5>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-lg-2 fw-medium">사업명</div>
+                    <div class="col-lg-10 fw-bold"><a href="javascript:void(0);">{{ user.project.project.businessname1 }}</a></div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-lg-2 fw-medium">내역사업명</div>
+                    <div class="col-lg-10"><a href="javascript:void(0);">{{ user.project.project.businessname2 }}</a></div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-lg-2 fw-medium">연구개발과제번호</div>
+                    <div class="col-lg-10"><a href="javascript:void(0);">{{ user.project.project.ntis }}</a></div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-lg-2 fw-medium">연구과제명</div>
+                    <div class="col-lg-10"><a href="javascript:void(0);">{{ user.project.project.title2 }}</a></div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-lg-2 fw-medium">주관연구개발기관</div>
+                    <div class="col-lg-10"><a href="javascript:void(0);">{{ user.project.project.maincompany }}</a></div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-lg-2 fw-medium">연구책임자</div>
+                    <div class="col-lg-10"><a href="javascript:void(0);">{{ user.project.project.mainresearcher }}</a></div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-lg-2 fw-medium">연구협약일일</div>
+                    <div class="col-lg-10"><a href="javascript:void(0);">{{ user.project.project.dateengage }}</a></div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-lg-2 fw-medium">정산확정일</div>
+                    <div class="col-lg-10"><a href="javascript:void(0);">정산확정일</a></div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-lg-2 fw-medium">연구개발비</div>
+                    <div class="col-lg-10"><a href="javascript:void(0);" class="price-format">{{ user.project.project.cost }} 원</a></div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-lg-2 fw-medium">정부지원금</div>
+                    <div class="col-lg-10"><a href="javascript:void(0);" class="price-format">{{ user.project.project.costgov }} 원</a></div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-lg-2 fw-medium">연구개발기관부담금</div>
+                    <div class="col-lg-10"><a href="javascript:void(0);" class="price-format">{{ user.project.project.costcompany }} 원</a></div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-lg-2 fw-medium">지방자치단체부담금</div>
+                    <div class="col-lg-10"><a href="javascript:void(0);" class="price-format">{{ user.project.project.costregion }} 원</a></div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-lg-2 fw-medium">기타지원금</div>
+                    <div class="col-lg-10"><a href="javascript:void(0);" class="price-format">{{ user.project.project.costetc }} 원</a></div>
+                </div>
+            </div>
+            <div class="card card-body">
+                <div class="mb-4 d-flex align-items-center justify-content-between">
+                    <h5 class="fw-bold mb-0">
+                        <span class="d-block mb-2">본 기관에만 해당하는 과제정보 :</span>
+                        {% comment %} <span class="fs-12 fw-normal text-muted d-block">Following information for your lead</span> {% endcomment %}
+                    </h5>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-lg-2 fw-medium">기관명</div>
+                    <div class="col-lg-10 fw-bold"><a href="javascript:void(0);">{{ user.project.company.name }}</a></div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-lg-2 fw-medium">기관유형</div>
+                    <div class="col-lg-10"><a href="javascript:void(0);">{{ user.project.company.type }}</a></div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-lg-2 fw-medium">연구책임자</div>
+                    <div class="col-lg-10"><a href="javascript:void(0);">{{ user.project.researcher }}</a></div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-lg-2 fw-medium">연구과제명</div>
+                    <div class="col-lg-10"><a href="javascript:void(0);">{{ user.project.title3 }}</a></div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-lg-2 fw-medium">주관연구개발기관</div>
+                    <div class="col-lg-10"><a href="javascript:void(0);">{{ user.project.project.maincompany }}</a></div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-lg-2 fw-medium">정부기여도</div>
+                    <div class="col-lg-10"><a href="javascript:void(0);">{{ user.project.rategov|floatformat:3 }}%</a></div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-lg-2 fw-medium">요율</div>
+                    <div class="col-lg-10"><a href="javascript:void(0);">{{ rate_size_percent|floatformat:1 }}%</a></div>
+                </div>
+                <hr>
+                <div class="row mb-4">
+                    <div class="col-lg-2 fw-medium">실사용정부지원금</div>
+                    <div class="col-lg-8">
+                        <div class="col-xxl-12">
+                            <div class="card widget-tickets-content">
+                                <div class="card-body custom-card-action p-0">
+                                    <div class="table-responsive tickets-items-wrapper">
+                                        <table class="table table-hover mb-0">
+                                            <tbody>
+                                                {% if user.project.grant1 %}
+                                                <tr>
+                                                    <td>
+                                                        <a href="javascript:void(0);">1차년도</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="price-format">{{ user.project.grant1 }}</a>
+                                                    </td>
+                                                </tr>
+                                                {% endif %}
+                                                {% if user.project.grant2 %}
+                                                <tr>
+                                                    <td>
+                                                        <a href="javascript:void(0);">2차년도</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="price-format">{{ user.project.grant2 }}</a>
+                                                    </td>
+                                                </tr>
+                                                {% endif %}
+                                                {% if user.project.grant3 %}
+                                                <tr>
+                                                    <td>
+                                                        <a href="javascript:void(0);">3차년도</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="price-format">{{ user.project.grant3 }}</a>
+                                                    </td>
+                                                </tr>
+                                                {% endif %}
+                                                {% if user.project.grant4 %}
+                                                <tr>
+                                                    <td>
+                                                        <a href="javascript:void(0);">4차년도</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="price-format">{{ user.project.grant4 }}</a>
+                                                    </td>
+                                                </tr>
+                                                {% endif %}
+                                                {% if user.project.grant5 %}
+                                                <tr>
+                                                    <td>
+                                                        <a href="javascript:void(0);">5차년도</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="price-format">{{ user.project.grant5 }}</a>
+                                                    </td>
+                                                </tr>
+                                                {% endif %}
+                                                {% if user.project.grant6 %}
+                                                <tr>
+                                                    <td>
+                                                        <a href="javascript:void(0);">6차년도</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="price-format">{{ user.project.grant6 }}</a>
+                                                    </td>
+                                                </tr>
+                                                {% endif %}
+                                                {% if user.project.grant7 %}
+                                                <tr>
+                                                    <td>
+                                                        <a href="javascript:void(0);">7차년도</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="price-format">{{ user.project.grant7 }}</a>
+                                                    </td>
+                                                </tr>
+                                                {% endif %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row mb-4">
+                    <div class="col-lg-2 fw-medium">기술기여도</div>
+                    <div class="col-lg-10">
+                        <div class="col-xxl-12">
+                            <div class="card widget-tickets-content">
+                                <div class="card-body custom-card-action p-0">
+                                    <div class="table-responsive tickets-items-wrapper">
+                                        <table class="table table-hover mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th style="font-size:14px;">구분</th>
+                                                    <th style="font-size:14px;">협약시 작성한 기술기여도</th>
+                                                    <th style="font-size:14px;">최종적으로 보고한 기술기여도</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <a href="javascript:void(0);">1년차</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);">{{ user.project.agreerate1|floatformat:1 }} %</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);">{{ user.project.agreerate1|floatformat:1 }} %</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <a href="javascript:void(0);">2년차</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);">{{ user.project.agreerate2|floatformat:1 }} %</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);">{{ user.project.agreerate2|floatformat:1 }} %</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <a href="javascript:void(0);">3년차</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);">{{ user.project.agreerate3|floatformat:1 }} %</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);">{{ user.project.agreerate3|floatformat:1 }} %</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <a href="javascript:void(0);">4년차</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);">{{ user.project.agreerate4|floatformat:1 }} %</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);">{{ user.project.agreerate4|floatformat:1 }} %</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <a href="javascript:void(0);">5년차</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);">{{ user.project.agreerate5|floatformat:1 }} %</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);">{{ user.project.agreerate5|floatformat:1 }} %</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <a href="javascript:void(0);">6년차</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);">{{ user.project.agreerate6|floatformat:1 }} %</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);">{{ user.project.agreerate6|floatformat:1 }} %</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <a href="javascript:void(0);">7년차</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);">{{ user.project.agreerate7|floatformat:1 }} %</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);">{{ user.project.agreerate7|floatformat:1 }} %</a>
+                                                    </td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const priceElements = document.querySelectorAll(".price-format");
+
+    priceElements.forEach(function (el) {
+    // 현재 텍스트: 예) "12345678 원"
+    const text = el.textContent.trim();
+
+    // 숫자만 추출 (숫자 외 문자 제거)
+    const number = parseInt(text.replace(/[^0-9]/g, ""), 10);
+
+    if (!isNaN(number)) {
+        // 숫자 포맷 후 다시 ' 원' 붙이기
+        el.textContent = number.toLocaleString('ko-KR') + ' 원';
+    }
+    });
+});
+</script>
+
+{% endblock %}

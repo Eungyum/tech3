@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="keyword" content="" />
+    <title></title>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'vendors/css/vendors.min.css' %}" />
+
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'vendors/css/daterangepicker.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'vendors/css/select2.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'vendors/css/select2-theme.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'vendors/css/jquery.time-to.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'vendors/css/jquery.steps.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'vendors/css/quill.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'vendors/css/datepicker.min.css' %}" /> -->
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/theme.min.css' %}" />
+
+    <!-- 직접 설정한 css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'egs/font.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'egs/auth.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    
+</head>
+<body>
+    <nav class="nxl-navigation">
+        <div class="navbar-wrapper">
+            <div class="m-header">
+                <a href="{% url 'dashboard' %}" class="b-brand">
+                    <img src="{{ user.project.project.agency_info.logo.url }}" alt="" class="logo logo-lg" style="width:150px;">
+                    <img src="{{ user.project.project.agency_info.logosmall.url }}" alt="" class="logo logo-sm" />
+                </a>
+            </div>
+            <div class="navbar-content">
+                <ul class="nxl-navbar">
+                    <li class="nxl-item nxl-caption">
+                        <label style="font-size:14px;">기술실시 실태조사</label>
+                    </li>
+                    <li class="nxl-item nxl-hasmenu">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-mtext fs-5">매출실적</span>
+                        </a>
+                        <ul class="nxl-submenu">
+                            <li class="nxl-item"><a class="nxl-link fs-6" href="{% url 'report' %}">1. 매출실적 작성하기</a></li>
+                            <li class="nxl-item"><a class="nxl-link fs-6" href="">2. 서식 작성하기</a></li>
+                            <li class="nxl-item"><a class="nxl-link fs-6" href="">3. 제출하기</a></li>
+                        </ul>
+                    </li>
+                    <li class="nxl-item nxl-hasmenu">
+                        <a href="javascript:void(0);" class="nxl-link fs-5">
+                            <span class="nxl-mtext" style="font-size:20px;">정보확인</span>
+                        </a>
+                        <ul class="nxl-submenu">
+                            <li class="nxl-item"><a class="nxl-link fs-6" href="{% url 'projectinfo' %}">1. 과제</a></li>
+                            <li class="nxl-item"><a class="nxl-link fs-6" href="{% url 'companyinfo' %}">2. 실시기관 및 담당자</a></li>
+                        </ul>
+                    </li>
+                    <li class="nxl-item nxl-hasmenu">
+                        <a href="javascript:void(0);" class="nxl-link fs-5">
+                            <span class="nxl-mtext" style="font-size:20px;">커뮤니케이션</span>
+                        </a>
+                        <ul class="nxl-submenu">
+                            <li class="nxl-item"><a class="nxl-link fs-6" href="">1. 문의/공지 히스토리</a></li>
+                            <li class="nxl-item"><a class="nxl-link fs-6" href="">2. 매뉴얼</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="card text-center">
+                    <div class="card-body" style="background-color:#f7f8fa;">
+                        <h6 class="mt-4 text-dark fw-bolder">마감일: 2025년 6월 30일</h6>
+                        <p class="fs-6 my-3 text-dark">매출 실적 보고 기한은 매년 <strong>6월 30일까지</strong>입니다. 자세한 내용을 확인하시려면 아래 버튼을 클릭하여 관련 법령을 참고해 주세요.</p>
+                        <a href="https://www.law.go.kr/법령/국가연구개발혁신법시행령/(20241231,35134,20241231)/제39조" class="btn btn-primary text-dark w-100 fs-6" target="_blank" 
+                        rel="noopener noreferrer">국가연구개발혁신법시행령</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <header class="nxl-header">
+        <div class="header-wrapper">
+            <div class="header-left d-flex align-items-center gap-4">
+                <a href="javascript:void(0);" class="nxl-head-mobile-toggler" id="mobile-collapse">
+                    <i class="bi bi-list"></i>
+                </a>
+                <div class="nxl-navigation-toggle">
+                    <a href="javascript:void(0);" id="menu-mini-button">
+                        <i class="bi bi-list"></i>
+                    </a>
+                    <a href="javascript:void(0);" id="menu-expend-button" style="display: none">
+                        <i class="bi bi-list"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="header-right d-flex align-items-center justify-content-end ms-auto">
+                <div class="d-flex align-items-center">
+                    <div class="dropdown nxl-h-item">
+                        <a href="javascript:void(0);" data-bs-toggle="dropdown" role="button" data-bs-auto-close="outside">
+                            <h4>{{ user.project.company.name }}</h4>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-user-dropdown">
+                            <div class="dropdown-divider"></div>
+                            <a href="" class="dropdown-item">
+                                <i class="feather-user"></i>
+                                <span>기업정보 수정</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="{% url 'logout' %}" class="dropdown-item">
+                                <i class="bi bi-box-arrow-right"></i>
+                                <span>로그아웃</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    {% block content %}{% endblock %}
+    <script src="{% static 'vendors/js/vendors.min.js' %}"></script>
+    <!-- <script src="{% static 'vendors/js/apexcharts.min.js' %}"></script>
+    <script src="{% static 'vendors/js/select2.min.js' %}"></script>
+    <script src="{% static 'vendors/js/select2-active.min.js' %}"></script>
+    <script src="{% static 'vendors/js/jquery.time-to.min.js' %}"></script>
+    <script src="{% static 'vendors/js/jquery.steps.min.js' %}"></script>
+    <script src="{% static 'vendors/js/jquery.validate.min.js' %}"></script> -->
+    <!-- <script src="{% static 'vendors/js/jquery.quill.min.js' %}"></script> -->
+    <!-- <script src="{% static 'vendors/js/datepicker.min.js' %}"></script>
+    <script src="{% static 'vendors/js/daterangepicker.min.js' %}"></script>
+    <script src="{% static 'vendors/js/apexcharts.min.js' %}"></script>
+    <script src="{% static 'vendors/js/circle-progress.min.js' %}"></script> -->
+    <!--! END: Vendors JS !-->
+    <!--! BEGIN: Apps Init  !-->
+    <!-- <script src="{% static 'js/common-init.min.js' %}"></script> -->
+    <!-- <script src="{% static 'js/dashboard-init.min.js' %}"></script>
+    <script src="{% static 'js/widgets-tables-init.min.js' %}"></script>
+    <script src="{% static 'js/projects-create-init.min.js' %}"></script> -->
+    <!--! END: Apps Init !-->
+    <!--! BEGIN: Theme Customizer  !-->
+    <!-- <script src="{% static 'js/theme-customizer-init.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script> -->
+    <script src="{% static 'js/view_scripts.js' %}"></script>
+</body>
